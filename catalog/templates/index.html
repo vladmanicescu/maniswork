@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Catalog Online</title>
+    <title>Password Manager</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+
+    <style>
+html, body{
+   padding:0px;
+   margin:0px;
+   font-family: 'Raleway', sans-serif;
+   color:#FFF;
+   height:100%;
+}
+body{
+   background:rgba(0, 0, 0, 0.5); 
+}
+
+.container{
+   max-width:200px;
+   background:rgba(0, 0, 0, 0.75);
+   margin:40px auto;
+   padding:10px 0px 20px 0px;
+   border:1px solid #111;
+   border-radius:4px;
+   box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
+}
+.link{
+   font-size:16px;
+   font-weight:300;
+   text-align:center;
+   position:relative;
+   height:40px;
+   line-height:40px;
+   margin-top:10px;
+   overflow:hidden;
+   width:90%;
+   margin-left:5%;
+   cursor:pointer;
+}
+.link:after{
+   content: '';
+   position:absolute;
+   width:80%;
+   border-bottom:1px solid rgba(255, 255, 255, 0.5);
+   bottom:50%;
+   left:-100%;
+   transition-delay: all 0.5s;
+   transition: all 0.5s;
+}
+.link:hover:after,
+.link.hover:after{
+   left:100%;
+}
+.link .text{
+   text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+   transition:all 0.75s;
+   transform:translateY(100%) translateZ(0);
+   transition-delay:all 0.25s;
+}
+.link:hover .text,
+.link.hover .text{
+   text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
+   transform:translateY(0%) translateZ(0) scale(1.1);
+   font-weight:600;
+}
+    .header{
+    background: url("http://ec2-13-59-193-255.us-east-2.compute.amazonaws.com/static/background.png") center center fixed;
+    color: #FFF;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -msn-background-size: cover;
+}
+.header .overlay{
+    background: rgba(0, 0, 0, 0.58);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; 
+}
+
+
+.header .navbar-default {
+	background-color:transparent !important;
+	border-color:transparent;
+	background-image:none;
+	box-shadow:none;	
+}
+.header .navbar-default .navbar-brand{
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.header .navbar-default .navbar-nav>li>a {
+   font-size:20px; 
+   color:#fff; 
+    border-bottom: 1px solid transparent
+}
+.header .navbar-default .navbar-nav>li:hover a{
+    color: #333;
+     border-bottom: 1px solid #FFF
+}
+
+
+.header .navbar-toggle {
+      margin:10px 0; 
+      background:#36C; 
+      color:#FFF;
+}
+        
+/* Fixed sidenav, full height */
+   .sidenav {
+     height: 50%;
+     width: 170px;
+     position: relative;
+     z-index: 1;
+	 top: 75px;
+     left: 0;
+     background-color: #111;
+     overflow-x: hidden;
+     padding-top: 0px;
+	 border-radius:4px;
+	 background:rgb(0,0,0); 
+	 box-shadow:0px 4px 5px rgb(0, 0, 0);
+	 border:1px solid #111;
+	 
+	 
+   } 
+   
+   /* Style the sidenav links and the dropdown button */
+   .sidenav a, .dropdown-btn {
+     padding: 6px 8px 6px 16px;
+     text-decoration: none;
+     font-size: 20px;
+     color: white;
+     display: block;
+     border: none;
+     background: none;
+     width: 100%;
+     text-align: left;
+     cursor: pointer;
+     outline: none;
+   }
+   
+   /* On mouse-over */
+   .sidenav a:hover, .dropdown-btn:hover {
+     color: white;
+	 text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
+	 transform:translateY(0%) translateZ(0) scale(1.1);
+	 <!-- font-weight:600; -->
+   }
+   
+   /* Main content */
+   .main {
+     margin-left: 200px; /* Same as the width of the sidenav */
+     font-size: 20px; /* Increased text to enable scrolling */
+     padding: 0px 10px;
+   }
+   
+   /* Add an active class to the active dropdown button */
+   .active {
+     background-color: red;
+     color: white;
+   }
+   
+   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+   .dropdown-container {
+     display: none;
+     background-color: #262626;
+     padding-left: 8px;
+   }
+   
+   /* Optional: Style the caret down icon */
+   .fa-caret-down {
+     float: right;
+     padding-right: 8px;
+   }
+   
+   /* Some media queries for responsiveness */
+   @media screen and (max-height: 450px) {
+     .sidenav {padding-top: 15px;}
+     .sidenav a {font-size: 18px;}
+   }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+  input[type=text] {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;     
+  box-sizing: border-box;
+  color: black
+}
+ 
+   .wrapper {width: 80% /* width of your table*/; margin:0 auto; position: fixed;left: 15px;top:75px}
+      table, th, td {
+     margin-left: 170px;
+     border: 1px solid black;
+     border-collapse: collapse;
+     padding: 15px;
+	 background: #212529 !important;
+     color: white !important;
+     top: 0px
+        }
+    .wrapper2 {width: 80% /* width of your table*/; margin:0 auto; position: fixed;left: 15px;top:275px}
+      table, th, td {
+     margin-left: 170px;
+     border: 1px solid black;
+     border-collapse: collapse;
+     padding: 15px;
+	 background: #212529 !important;
+     color: white !important;
+     top: 0px
+	 
+     
+   }
+    </style>
+      
+  </head>
+    <body>
+       <section class="header">
+            <div class="overlay">
+                <div class="row">
+                   <div class="navbar navbar-default">
+                      <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                            <div class="navlogo col-lg-2">
+                                <a class="navbar-brand" href="#">Catalog Online</a>
+                            </div>
+                          
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                          
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <div class="col-lg-8">
+                                      <ul class="nav navbar-nav nav-links">
+                                         <li><a href="http://ec2-13-59-193-255.us-east-2.compute.amazonaws.com">Refresh</a></li>
+                                        <li><a href="#">Home</a></li>
+
+
+                                      </ul>
+                                    </div>
+                                    
+                                <div class="col-lg-2 right">
+                                     <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#"><i class="fa fa-search fa-2x"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+                                         
+                                    </ul>
+                                </div>
+                              
+                            </div>
+                         
+
+                      </div>
+                 </div>
+                
+                
+                </div>
+        
+                
+                
+                
+                
+            </div>
+        <div class="sidenav">
+          <button class="dropdown-btn">Grupe
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+             <form action="{{ 'http://ec2-13-59-193-255.us-east-2.compute.amazonaws.com/api/v1/resources/cursanti' }}" method="get">
+               <label for="grupa" color='black'>Grupa:</label>
+               <input type="text" name="grupa" color = 'black'>
+               <label for="profesoara">Profesoara:</label>
+               <input type="text" name="profesoara">
+               <input type="submit" height="4">
+             </form>
+           </div>
+           <button class="dropdown-btn">Prezenta 
+             <i class="fa fa-caret-down"></i>
+           </button>
+             <div class="dropdown-container">
+               <form action="{{ 'http://ec2-13-59-193-255.us-east-2.compute.amazonaws.com/api/v1/resources/prezenta' }}" method="get">
+               <label for="grupa" color='black'>Grupa:</label>
+               <input type="text" name="grupa" color = 'black'>
+               <label for="profesoara">Profesoara:</label>
+               <input type="text" name="profesoara">
+               <input type="submit" height="4">
+             </form>
+          </div>
+            <button class="dropdown-btn">Adaugare Cursant 
+             <i class="fa fa-caret-down"></i>
+           </button>
+             <div class="dropdown-container">
+               <form action="{{ 'http://ec2-13-59-193-255.us-east-2.compute.amazonaws.com/api/v1/resources/aditie/cursanti' }}" method="post">
+               <label for="grupa" color='black'>Grupa:</label>
+               <input type="text" name="grupa" color = 'black'>
+               <label for="profesoara">Profesoara:</label>
+               <input type="text" name="profesoara">
+               <label for="prenume">Prenume:</label>
+               <input type="text" name="prenume">
+               <label for="nume">Nume:</label>
+               <input type="text" name="nume">   
+               <input type="submit" height="4">
+             </form>
+          </div>
+        </div>
+           <script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+
+</script>
+           {% if length > 0 %}
+<div class="wrapper">
+  <table class="table table-dark">
+               <tr>
+                   <th> Prenume </th> 
+                   <th> Nume </th>
+   				   <th> Profesoara Asignata </th>
+   				   <th> Grupa</th>
+               </tr>
+   
+   
+       {% for item in labels %}
+   
+               <tr>
+                   <td>{{ item[0] }}</td> 
+                   <td>{{ item[1] }}</td>
+   				   <td>{{ item[2] }}</td>
+                   <td>{{ item[3] }}</td>
+               </tr>
+   
+       {% endfor %}
+   
+   
+       </table>
+</div>
+           {% endif %}
+           {% if length2 > 0 %}
+<div class="wrapper">
+  <table class="table table-dark">
+               <tr>
+                   <th> Prenume </th> 
+                   <th> Nume </th>
+   				   <th> Data </th>
+   				   <th> Status</th>
+               </tr>
+   
+   
+       {% for item in labels2 %}
+   
+               <tr>
+                   <td>{{ item[0] }}</td> 
+                   <td>{{ item[1] }}</td>
+   				   <td>{{ item[2] }}</td>
+                   <td>{{ item[3] }}</td>
+               </tr>
+   
+       {% endfor %}
+   
+   
+       </table>
+</div>   
+           
+         {% endif %}  
+        </section>      
+        
+    </body>
+      
+      
+      
+      
+      
+      
+      
+      
